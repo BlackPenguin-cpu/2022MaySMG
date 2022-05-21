@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 45313067}
   - component: {fileID: 45313066}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: IngameStatusCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 225834717}
   - component: {fileID: 225834716}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 399335387}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: GreenBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 1383430442}
   - component: {fileID: 1383430444}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,19 +572,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec11ed2a8704d344a8c09f4ed6e4bff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGreenGauge:
+  minValue:
     _usage: 0
     _value: 0
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  maxGreenGauge:
+  maxValue:
     _usage: 0
-    _value: 100
+    _value: 0
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  currentGreenGauge:
+  currentValue:
     _usage: 0
     _value: 0
     _constant: {fileID: 0}

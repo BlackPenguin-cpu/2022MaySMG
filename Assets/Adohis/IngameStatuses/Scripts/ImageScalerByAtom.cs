@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace UiUtils
 {
-    public class ImageFillByAtom : MonoBehaviour
+    public class ImageScalerByAtom : MonoBehaviour
     {
-        private float ratio { get => currentGreenGauge.Value / maxGreenGauge.Value; }
+        private float ratio { get => Mathf.InverseLerp(minValue.Value, maxValue.Value, currentValue.Value); }
 
         private RectTransform rectTransform;
 
-        public FloatReference minGreenGauge;
-        public FloatReference maxGreenGauge;
-        public FloatReference currentGreenGauge;
+        public FloatReference minValue;
+        public FloatReference maxValue;
+        public FloatReference currentValue;
 
         public Vector3Reference minScale;
         public Vector3Reference maxScale;

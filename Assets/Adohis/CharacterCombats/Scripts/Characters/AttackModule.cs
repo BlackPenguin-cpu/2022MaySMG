@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 namespace Character
@@ -10,6 +11,8 @@ namespace Character
         public Projectiles prefab;
         public float attackInterval = 1f;
 
+        public FloatReference greenGauge;
+
         private void Start()
         {
             FireAsync(prefab, attackInterval).AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
@@ -18,7 +21,12 @@ namespace Character
         private void Fire()
         {
             var projectile = Instantiate(prefab, transform);
-            projectile.gameObject.SetActive(true);
+
+            if (greenGauge >= projectile.resourceConsumption)
+            {
+                projectile.gameObject.SetActive(true);
+                greenGauge.Value -= projectile.resourceConsumption;
+            }
         }
 
         private async UniTask FireAsync(Projectiles prefab, float interval)

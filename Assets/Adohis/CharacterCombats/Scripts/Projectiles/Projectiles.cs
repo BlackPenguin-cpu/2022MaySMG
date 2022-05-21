@@ -13,6 +13,7 @@ namespace Character
         public float speed = 1f;
         public float collisionSize = 1f;
         public float damage;
+        public float resourceConsumption = 1f;
 
         private void Awake()
         {
@@ -37,8 +38,6 @@ namespace Character
 
             var outPositionX = orthographicSize * screenRatio + maxRangeOffset;
 
-            Debug.Log(outPositionX);
-
             if (transform.position.x > outPositionX)
             {
                 Destroy();
@@ -57,7 +56,7 @@ namespace Character
 
         private void Attack(Enemy enemy)
         {
-            enemy.maxHealth -= damage;
+            enemy.GetDamage(damage);
         }
 
         private void Destroy()

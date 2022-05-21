@@ -1,14 +1,16 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using static Enemies.EnemySpawner;
 
 namespace Enemies
 {
     public class Enemy : MonoBehaviour
     {
-        private float currentHealth;
-
-        public float maxHealth;
+        public FloatReference currentHealth;
+        public FloatReference maxHealth;
         public float speed;
 
         private void Start()
@@ -21,10 +23,16 @@ namespace Enemies
             Move();
         }
 
+        public void SetStatus(EnemyData data)
+        {
+            maxHealth.Value = data.health;
+            speed = data.speed;
+        }
+
         public void GetDamage(float damage)
         {
-            maxHealth -= damage;
-            if (maxHealth <= 0f)
+            currentHealth.Value -= damage;
+            if (currentHealth.Value <= 0f)
             {
                 Die();
             }
@@ -32,7 +40,7 @@ namespace Enemies
 
         private void InitStatus()
         {
-            currentHealth = maxHealth;
+            currentHealth.Value = maxHealth.Value;
         }
 
         private void Move()
@@ -43,7 +51,7 @@ namespace Enemies
 
         private void Die()
         {
-            maxHealth = 0f;
+            currentHealth.Value = 0f;
             //
 
             //
