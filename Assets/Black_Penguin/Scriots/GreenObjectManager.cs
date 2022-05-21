@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GreenObjectManager : MonoBehaviour
 {
-    public class YposRange
+    [System.Serializable]
+    public class Range
     {
         public int minimum;
         public int maximum;
@@ -16,11 +18,27 @@ public class GreenObjectManager : MonoBehaviour
     public GameObject jumpObj;
     public float greenGaugeValue;
     public float objSpawnDelay;
-    float curObjSpawnDelay;
+    public bool isClicked;
 
-    public Vector2 spawnPos;
-    public YposRange randomYposRange;
+    private int comboCount;
+    public int _comboCount
+    {
+        get { return comboCount; }
+        set
+        {
+            if (value > comboCount)
+                comboResetTime = 1;
 
+            comboCount = value;
+        }
+    }
+    public float comboResetTime;
+    public Text comboText;
+
+    public Vector2 floatSpawnPos;
+    public Vector2 jumpSpawnPos;
+    public Range randomYposRange;
+    public Range jumpBallspawnPos;
 
     private void Awake()
     {
@@ -28,17 +46,31 @@ public class GreenObjectManager : MonoBehaviour
             instance = this;
         else Destroy(this.gameObject);
     }
+    private void Start()
+    {
+        InvokeRepeating("spawnObj", 2.5f, 2.5f);
+        InvokeRepeating("spawnJumpObj", 0.35f, 0.35f);
+    }
     public void Update()
     {
-        curObjSpawnDelay += Time.deltaTime;
-        if (curObjSpawnDelay > objSpawnDelay)
+        if (Input.GetMouseButtonDown(0))
+            isClicked = true;
+        if (Input.GetMouseButtonUp(0))
+            isClicked = false;
+
+        comboResetTime -= Time.deltaTime;
+        if (comboResetTime < 0)
         {
-            curObjSpawnDelay = 0;
-            spawnObj();
+            comboCount = 0;
         }
+        comboText.text = comboCount.ToString();
     }
     void spawnObj()
     {
-        Instantiate(Random.Range(0, 2) == 0 ? jumpObj : floatObj, spawnPos + Vector2.up * Random.Range(randomYposRange.minimum, randomYposRange.maximum), Quaternion.identity);
+        Instantiate(floatObj, floatSpawnPos + Vector2.up * Random.Range(randomYposRange.minimum, randomYposRange.maximum), Quaternion.identity);
+    }
+    void spawnJumpObj()
+    {
+        Instantiate(jumpObj, jumpSpawnPos + Vector2.right * Random.Range(jumpBallspawnPos.minimum, jumpBallspawnPos.maximum), Quaternion.identity);
     }
 }
