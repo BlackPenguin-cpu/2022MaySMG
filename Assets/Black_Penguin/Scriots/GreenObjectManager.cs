@@ -63,7 +63,7 @@ public class GreenObjectManager : MonoBehaviour
         {
             comboCount = 0;
         }
-        comboText.text = comboCount.ToString();
+        //comboText.text = comboCount.ToString();
     }
     void spawnObj()
     {
