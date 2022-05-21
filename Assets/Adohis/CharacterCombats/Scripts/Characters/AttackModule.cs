@@ -15,7 +15,7 @@ namespace Character
 
         private void Start()
         {
-            FireAsync(prefab, attackInterval).AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
+            FireAsync(prefab).AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
         }
 
         private void Fire()
@@ -29,13 +29,13 @@ namespace Character
             }
         }
 
-        private async UniTask FireAsync(Projectiles prefab, float interval)
+        private async UniTask FireAsync(Projectiles prefab)
         {
             Fire();
 
-            await UniTask.Delay((int)(interval * 1000f));
+            await UniTask.Delay((int)(attackInterval * 1000f));
 
-            await FireAsync(prefab, interval);
+            await FireAsync(prefab);
         }
 
     }

@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks;
 using Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 namespace Character
 {
@@ -14,6 +16,7 @@ namespace Character
         public float collisionSize = 1f;
         public float damage;
         public float resourceConsumption = 1f;
+        public AudioClip fireSFX;
 
         private void Awake()
         {
@@ -46,7 +49,10 @@ namespace Character
 
         private void Fire()
         {
-
+            if (fireSFX != null)
+            {
+                SoundManager.Instance.PlayDuplicatedSFXAsync(fireSFX).Forget();
+            }
         }
 
         private void Move()
