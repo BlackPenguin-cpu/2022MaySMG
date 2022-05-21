@@ -23,11 +23,6 @@ namespace Character
             SetPosition();
         }
 
-        private void Update()
-        {
-            SetPosition();
-        }
-
         public void SetPosition()
         {
             var orthographicSize = screenCamera.orthographicSize;
