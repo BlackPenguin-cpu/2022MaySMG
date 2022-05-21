@@ -15,7 +15,8 @@ namespace Enemies
             public float speed;
             public float health;
             public Enemy enemyPrefab;
-            public float spawnDelay;
+            public float initialSpawnDelay;
+            public float spawnInterval;
         }
 
         public List<EnemyData> enemyDataList;
@@ -30,23 +31,24 @@ namespace Enemies
         {
             foreach (var enemyData in enemyDataList)
             {
-                SpawnAsync(enemyData).AttachExternalCancellation(this.GetCancellationTokenOnDestroy());
+                SpawnAsync(enemyData, enemyData.initialSpawnDelay)
+                    .AttachExternalCancellation(this.GetCancellationTokenOnDestroy());
             }
         }
 
-        private async UniTask SpawnAsync(EnemyData enemyData)
+        private async UniTask SpawnAsync(EnemyData enemyData, float delay)
         {
-            await UniTask.Delay((int)(enemyData.spawnDelay * 1000f));
+            await UniTask.Delay((int)(delay * 1000f));
             CreateEnemy(enemyData);
-            await SpawnAsync(enemyData);
+            await SpawnAsync(enemyData, enemyData.spawnInterval);
         }
 
         private void CreateEnemy(EnemyData enemyData)
         {
             var enemy = Instantiate(enemyData.enemyPrefab);
+            enemy.gameObject.SetActive(true);
             enemy.transform.position = spawnPoint.position;
             enemy.SetStatus(enemyData);
-            enemy.gameObject.SetActive(true);
         }
     }
 

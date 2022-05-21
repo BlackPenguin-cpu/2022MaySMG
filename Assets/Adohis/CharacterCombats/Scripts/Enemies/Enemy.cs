@@ -1,8 +1,11 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using Utils;
 using static Enemies.EnemySpawner;
 
 namespace Enemies
@@ -12,7 +15,7 @@ namespace Enemies
         public FloatReference currentHealth;
         public FloatReference maxHealth;
         public float speed;
-
+        public AudioClip deathSound;
         private void Start()
         {
             InitStatus();
@@ -34,7 +37,7 @@ namespace Enemies
             currentHealth.Value -= damage;
             if (currentHealth.Value <= 0f)
             {
-                Die();
+                DieAsync().AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
             }
         }
 
@@ -49,13 +52,16 @@ namespace Enemies
         }
 
 
-        private void Die()
+        private async UniTask DieAsync()
         {
             currentHealth.Value = 0f;
             //
-
+            if (deathSound != null)
+            {
+                SoundManager.Instance.PlayDuplicatedSFXAsync(deathSound).Forget();
+                Destroy(gameObject);
+            }
             //
-            Destroy(gameObject);
         }
 
 

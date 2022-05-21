@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9035893899557860000
 Transform:
   m_ObjectHideFlags: 0
@@ -323,6 +323,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 9035893899442801506}
   speed: 1
+  deathSound: {fileID: 8300000, guid: ad19173a58050c54cb7b46bcdfd1ddbf, type: 3}
 --- !u!1 &9035893899828252838
 GameObject:
   m_ObjectHideFlags: 0
