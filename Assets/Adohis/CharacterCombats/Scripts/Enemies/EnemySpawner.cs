@@ -32,7 +32,7 @@ namespace Enemies
             foreach (var enemyData in enemyDataList)
             {
                 SpawnAsync(enemyData, enemyData.initialSpawnDelay)
-                    .AttachExternalCancellation(this.GetCancellationTokenOnDestroy());
+                    .AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
             }
         }
 
