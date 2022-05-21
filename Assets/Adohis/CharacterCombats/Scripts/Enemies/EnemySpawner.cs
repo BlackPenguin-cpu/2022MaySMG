@@ -15,8 +15,10 @@ namespace Enemies
             public float speed;
             public float health;
             public Enemy enemyPrefab;
+            public float height;
             public float initialSpawnDelay;
             public float spawnInterval;
+            public float score;
         }
 
         public List<EnemyData> enemyDataList;
@@ -47,7 +49,7 @@ namespace Enemies
         {
             var enemy = Instantiate(enemyData.enemyPrefab);
             enemy.gameObject.SetActive(true);
-            enemy.transform.position = spawnPoint.position;
+            enemy.transform.position = spawnPoint.position + Vector3.up * enemyData.height;
             enemy.SetStatus(enemyData);
         }
     }
