@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Enemies;
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using Utils;
 
@@ -17,6 +18,8 @@ namespace Character
         public float damage;
         public float resourceConsumption = 1f;
         public AudioClip fireSFX;
+
+        public Vector3EventReference onHitProjectile;
 
         private void Awake()
         {
@@ -62,6 +65,7 @@ namespace Character
 
         private void Attack(Enemy enemy)
         {
+            onHitProjectile?.Event?.Raise(transform.position);
             enemy.GetDamage(damage);
         }
 

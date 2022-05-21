@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
-namespace UiUtils
+namespace Utils
 {
     public class ImageScalerByAtom : MonoBehaviour
     {
