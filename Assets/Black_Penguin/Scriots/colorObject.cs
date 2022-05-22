@@ -12,13 +12,19 @@ public class colorObject : MonoBehaviour
     public FloatReference greenValue;
     public GameObject particle;
     public GameObject deadCell;
+    public List<Sprite> sprites;
+    Rigidbody2D rigid;
 
     float colorValue;
     private void Start()
     {
+        rigid = GetComponent<Rigidbody2D>();
+        rigid.AddTorque(Random.Range(-30, 30));
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Random.ColorHSV();
         float minusColor = (spriteRenderer.color.r + spriteRenderer.color.b) / 2;
+        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Count)];
 
         colorValue += spriteRenderer.color.g - minusColor;
         if (colorValue > 0)
@@ -52,7 +58,7 @@ public class colorObject : MonoBehaviour
     }
     void OnClicked()
     {
-        greenValue.Value += colorValue;
+        greenValue.Value += colorValue * 20;
         if (colorValue > 0)
         {
             GreenObjectManager.instance._comboCount++;

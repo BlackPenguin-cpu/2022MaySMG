@@ -10,6 +10,10 @@ public class ObjectDeadCell : MonoBehaviour
     public GameObjectReference guageBar;
 
     float speed = 2;
+    private void Start()
+    {
+        Gauge = GameObject.Find("DeadCellPoint").transform;
+    }
     private void Update()
     {
         /*
