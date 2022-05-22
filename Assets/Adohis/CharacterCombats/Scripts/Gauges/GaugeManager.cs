@@ -12,10 +12,6 @@ namespace GameSystem
         public FloatReference currentGauge;
         public float gaugeReduceSpeed;
 
-        [Header("Initialize")]
-        public GameObject barObject;
-        public GameObjectReference barObjectReference;
-
         [Header("Alert")]
         public float alertRatio;
         public TransformShaker shaker;
@@ -23,8 +19,6 @@ namespace GameSystem
         private void Awake()
         {
             currentGauge.Value = maxGauge.Value;
-
-            barObjectReference.Value = barObject;
         }
 
         private void Update()
