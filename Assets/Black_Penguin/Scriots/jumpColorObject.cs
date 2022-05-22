@@ -20,6 +20,8 @@ public class jumpColorObject : MonoBehaviour
 
     public List<Sprite> sprites;
 
+    public FloatReference difficulty;
+
     float colorValue;
     void Start()
     {
@@ -61,7 +63,7 @@ public class jumpColorObject : MonoBehaviour
     }
     void OnClicked()
     {
-        greenValue.Value += colorValue * 20;
+        greenValue.Value += colorValue * 40f / difficulty.Value;
         if (colorValue > 0)
         {
             GreenObjectManager.instance._comboCount++;

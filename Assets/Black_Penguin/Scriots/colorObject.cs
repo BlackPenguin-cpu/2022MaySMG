@@ -16,6 +16,9 @@ public class colorObject : MonoBehaviour
     public GameObject deadCell;
     public List<Sprite> sprites;
     public AudioClip clip;
+
+    public FloatReference difficulty;
+
     Rigidbody2D rigid;
 
     float colorValue;
@@ -62,7 +65,7 @@ public class colorObject : MonoBehaviour
     }
     void OnClicked()
     {
-        greenValue.Value += colorValue * 20;
+        greenValue.Value += colorValue * 40f / difficulty.Value;
         if (colorValue > 0)
         {
             GreenObjectManager.instance._comboCount++;

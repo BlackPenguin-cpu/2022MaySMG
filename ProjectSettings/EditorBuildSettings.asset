@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Adohis/CharacterCombats/Scenes/CharacterScene.unity
     guid: dcdcdc6b0acf20e4f81fd8fcfa1be623
   - enabled: 1
-    path: Assets/Adohis/CharacterCombats/Scenes/CharacterSceneCopied.unity
-    guid: 3e364a44c44841948b4c844fc018ddcc
-  - enabled: 1
     path: Assets/Adohis/Results/Scenes/ResultScene.unity
     guid: 55ef26d9b504df441b4c8fce9ca5f58a
   m_configObjects: {}

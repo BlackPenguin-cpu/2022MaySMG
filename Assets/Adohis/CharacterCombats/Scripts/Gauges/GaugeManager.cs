@@ -11,7 +11,7 @@ namespace GameSystem
         public FloatReference maxGauge;
         public FloatReference currentGauge;
         public float gaugeReduceSpeed;
-
+        public FloatReference difficulty;
         [Header("Alert")]
         public float alertRatio;
         public TransformShaker shaker;
@@ -23,7 +23,7 @@ namespace GameSystem
 
         private void Update()
         {
-            currentGauge.Value = Mathf.Clamp(currentGauge.Value - (gaugeReduceSpeed * Time.deltaTime), 0f, maxGauge.Value);
+            currentGauge.Value = Mathf.Clamp(currentGauge.Value - (gaugeReduceSpeed * Time.deltaTime * difficulty.Value), 0f, maxGauge.Value);
 
             /*
             var ratio = currentGauge.Value / maxGauge.Value;

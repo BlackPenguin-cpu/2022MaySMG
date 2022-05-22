@@ -46,6 +46,8 @@ namespace GameSystem
             smoke.gameObject.SetActive(true);
             SoundManager.Instance.PlayBGM(0, 0f);
 
+            SkipTitle().AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
+
             await smoke.DOFade(1f, smokeFadeDuration).SetEase(smokeFadeEase);
 
             await foreground.DOFade(0f, foregroundOutFadeDuration).SetEase(foregroundFadeOutEase);
@@ -55,11 +57,18 @@ namespace GameSystem
             await WaitInputAsync(0f);
         }
 
-        private async UniTask WaitInputAsync(float delay)
+        private async UniTask SkipTitle()
         {
+            await UniTask.WaitUntil(() => Input.GetKeyDown(keyCode));
+
+            await SceneManager.LoadSceneAsync(nextSceneName);
+        }
+
+        private async UniTask WaitInputAsync(float delay)
+        {           
             await UniTask.Delay((int)(delay * 1000f));
 
-            await UniTask.WaitUntil(() => Input.GetKeyDown(keyCode));
+            await UniTask.WaitUntil(() => Input.anyKeyDown);
 
             SoundManager.Instance.StopBGM(foregroundInFadeDuration);
 

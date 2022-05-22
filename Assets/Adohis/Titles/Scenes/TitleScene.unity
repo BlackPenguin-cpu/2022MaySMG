@@ -635,8 +635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fddfb97c93dfca4d837747509b84791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: CharacterSceneCopied
-  keyCode: 32
+  nextSceneName: CharacterScene
+  keyCode: 27
   foreground: {fileID: 401735332}
   startDelay: 3
   foregroundOutFadeDuration: 12.6
