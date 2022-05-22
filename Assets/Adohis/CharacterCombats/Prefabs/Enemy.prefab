@@ -718,7 +718,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 9035893899442801506}
   speed: 3
-  deathSound: {fileID: 8300000, guid: 705cd921c79ec4d4a80cbdfa43676c9b, type: 3}
+  deathSound: {fileID: 8300000, guid: bb091bf68a246ac4cb1cb0235a4c7d70, type: 3}
   tmpRevealer: {fileID: 330405170643174997}
   healthBar: {fileID: 0}
   body: {fileID: 9035893899557860001}
@@ -727,6 +727,13 @@ MonoBehaviour:
   shakeVibrato: 100
   dieFxPrefab: {fileID: 8876987508899590410, guid: 40535e3f20d3b234ab1a57ed654c656a, type: 3}
   fxSize: 1
+  heightOffset: 0
+  minH: 0
+  maxH: 0
+  minS: 0
+  maxS: 0
+  minV: 0
+  maxV: 0
   onDie:
     _usage: 1
     _event: {fileID: 0}

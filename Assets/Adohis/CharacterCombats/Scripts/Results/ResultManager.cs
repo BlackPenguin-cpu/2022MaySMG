@@ -1,9 +1,12 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Utils;
 
 namespace GameSystem
 {
@@ -15,6 +18,10 @@ namespace GameSystem
         //public Canvas 
         public FloatReference currentGauge;
         public string resultSceneName;
+
+        public float fadeOutDelay;
+        public Image fadeOutImage;
+
 
         private void Update()
         {
@@ -29,6 +36,10 @@ namespace GameSystem
             isGameOver = true;
             Time.timeScale = 0f;
             ScoreManager.Instance.CalculateResult();
+
+            SoundManager.Instance.StopBGM(fadeOutDelay);
+            await fadeOutImage.DOFade(1f, fadeOutDelay).SetUpdate(true);
+
             await SceneManager.LoadSceneAsync(resultSceneName);
         }
     }

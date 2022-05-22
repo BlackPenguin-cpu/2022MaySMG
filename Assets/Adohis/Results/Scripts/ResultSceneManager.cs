@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
 
 namespace GameSystem
 {
@@ -31,6 +32,8 @@ namespace GameSystem
         private async UniTask ShowResultAsync()
         {
             await UniTask.Delay((int)(fadeOutDelay * 1000f));
+
+            SoundManager.Instance.PlayBGM(0, 3f);
 
             await fadeImage.DOFade(0f, fadeOutDuration).SetEase(fadeOutEase);
 

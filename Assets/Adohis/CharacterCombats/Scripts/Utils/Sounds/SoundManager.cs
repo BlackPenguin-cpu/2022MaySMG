@@ -135,11 +135,11 @@ namespace Utils
         {
             if (isStop)
             {
-                audioSource.DOFade(fadeValue, fadeDuration).OnComplete(audioSource.Stop);
+                audioSource.DOFade(fadeValue, fadeDuration).OnComplete(audioSource.Stop).SetUpdate(true);
             }
             else
             {
-                audioSource.DOFade(fadeValue, fadeDuration);
+                audioSource.DOFade(fadeValue, fadeDuration).SetUpdate(true);
             }
         }
 
