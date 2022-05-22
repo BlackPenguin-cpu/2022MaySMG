@@ -15,14 +15,18 @@ public class jumpColorObject : MonoBehaviour
     public GameObject deadCell;
     public FloatReference greenValue;
 
+    public List<Sprite> sprites;
+
     float colorValue;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         rigid.AddForce(new Vector2(Random.Range(0, 2) == 0 ? jumpHeight.x : -jumpHeight.x, jumpHeight.y), ForceMode2D.Impulse);
+        rigid.AddTorque(Random.Range(-30,30));
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Random.ColorHSV();
+        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Count)];
 
         float minusColor = (spriteRenderer.color.r + spriteRenderer.color.b) / 2;
 
@@ -53,7 +57,7 @@ public class jumpColorObject : MonoBehaviour
     }
     void OnClicked()
     {
-        greenValue.Value += colorValue;
+        greenValue.Value += colorValue * 20;
         if (colorValue > 0)
         {
             GreenObjectManager.instance._comboCount++;

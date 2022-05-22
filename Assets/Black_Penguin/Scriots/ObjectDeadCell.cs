@@ -6,6 +6,10 @@ public class ObjectDeadCell : MonoBehaviour
 {
     public Transform Gauge;
     float speed = 2;
+    private void Start()
+    {
+        Gauge = GameObject.Find("DeadCellPoint").transform;
+    }
     private void Update()
     {
         transform.position = Vector3.Slerp(transform.position, Camera.main.ScreenToWorldPoint(Gauge.position), Time.deltaTime * speed);

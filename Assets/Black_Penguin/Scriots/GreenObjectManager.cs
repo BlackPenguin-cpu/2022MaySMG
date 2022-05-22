@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GreenObjectManager : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class GreenObjectManager : MonoBehaviour
         }
     }
     public float comboResetTime;
-    public Text comboText;
+    public TextMeshProUGUI comboText;
 
     public Vector2 floatSpawnPos;
     public Vector2 jumpSpawnPos;
@@ -63,14 +64,18 @@ public class GreenObjectManager : MonoBehaviour
         {
             comboCount = 0;
         }
-        //comboText.text = comboCount.ToString();
+        comboText.text = comboCount.ToString();
     }
     void spawnObj()
     {
-        Instantiate(floatObj, floatSpawnPos + Vector2.up * Random.Range(randomYposRange.minimum, randomYposRange.maximum), Quaternion.identity);
+        Instantiate(floatObj, floatSpawnPos + Vector2.up * Random.Range(randomYposRange.minimum, randomYposRange.maximum), Quaternion.Euler(0, 0, Random.Range(0, 360)));
     }
     void spawnJumpObj()
     {
-        Instantiate(jumpObj, jumpSpawnPos + Vector2.right * Random.Range(jumpBallspawnPos.minimum, jumpBallspawnPos.maximum), Quaternion.identity);
+        Instantiate(jumpObj, jumpSpawnPos + Vector2.right * Random.Range(jumpBallspawnPos.minimum, jumpBallspawnPos.maximum), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+    }
+    public string GetThousandCommaText(long data)
+    {
+        return string.Format("{0:#,###}", data);
     }
 }
