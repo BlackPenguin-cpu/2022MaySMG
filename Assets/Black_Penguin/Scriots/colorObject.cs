@@ -29,6 +29,7 @@ public class colorObject : MonoBehaviour
         colorValue += spriteRenderer.color.g - minusColor;
         if (colorValue > 0)
         {
+            spriteRenderer.color += new Color(-1, 0, -1);
             particle.SetActive(true);
         }
     }

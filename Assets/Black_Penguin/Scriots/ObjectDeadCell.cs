@@ -26,7 +26,7 @@ public class ObjectDeadCell : MonoBehaviour
         */
 
         transform.position = Vector3.Slerp(transform.position, Camera.main.ScreenToWorldPoint(guageBar.Value.transform.position), Time.deltaTime * speed);
-        speed += Time.deltaTime * 10;
+        speed += Time.deltaTime * 5;
         if (Vector2.Distance(transform.position, guageBar.Value.transform.position) < 1)
         {
             Destroy(gameObject);
