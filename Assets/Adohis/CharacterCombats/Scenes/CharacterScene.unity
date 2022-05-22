@@ -4462,7 +4462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 111,111,111,111
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 11794d9ef49f1734aa3f6a2ef8aebdd1, type: 2}
   m_sharedMaterial: {fileID: -770840357240601149, guid: 11794d9ef49f1734aa3f6a2ef8aebdd1, type: 2}
@@ -4489,10 +4489,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 36
+  m_fontSize: 170
+  m_fontSizeBase: 170
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -4555,8 +4555,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28, y: -154}
-  m_SizeDelta: {x: 527.6816, y: 131.9204}
+  m_AnchoredPosition: {x: -39, y: -191.4959}
+  m_SizeDelta: {x: 550.34, y: 206.9121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2093472072
 PrefabInstance:

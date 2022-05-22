@@ -4915,6 +4915,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9c0739db43834614db25c93e3688684d, type: 3}
   - {fileID: 21300000, guid: a858582a7512f624b827394c932c582a, type: 3}
   - {fileID: 21300000, guid: 354025905d1e81c438fb112a9819a288, type: 3}
+  clip: {fileID: 8300000, guid: d5e6f2c354390734f9d62427139dcb0f, type: 3}
 --- !u!50 &7476539192060284381
 Rigidbody2D:
   serializedVersion: 4

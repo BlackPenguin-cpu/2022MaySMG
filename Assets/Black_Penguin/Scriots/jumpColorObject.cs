@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using System.Threading.Tasks;
+using Utils;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,6 +16,7 @@ public class jumpColorObject : MonoBehaviour
     public GameObject particle;
     public GameObject deadCell;
     public FloatReference greenValue;
+    public AudioClip clip;
 
     public List<Sprite> sprites;
 
@@ -62,13 +65,29 @@ public class jumpColorObject : MonoBehaviour
         if (colorValue > 0)
         {
             GreenObjectManager.instance._comboCount++;
+            GameObject obj = Instantiate(deadCell, transform.position, Quaternion.identity);
+            obj.GetComponent<SpriteRenderer>().color = new Color(0.6509804f, 0.8862745f, 0.3803922f);
         }
         else
         {
+            CameraShake();
             GreenObjectManager.instance._comboCount = 0;
         }
-        GameObject obj = Instantiate(deadCell, transform.position, Quaternion.identity);
-        obj.GetComponent<SpriteRenderer>().color = new Color(0.6509804f, 0.8862745f, 0.3803922f);
+        SoundManager.Instance.PlayDuplicatedSFXAsync(clip);
         Destroy(gameObject);
+    }
+    public async void CameraShake()
+    {
+        float duration = 0.5f;
+        Vector3 pos = new Vector3(0, 0, -10);
+        while (duration > 0)
+        {
+            Camera.main.transform.localPosition = pos;
+            Camera.main.transform.localPosition = (Vector3)(Random.insideUnitCircle) / 3 + pos;
+
+            await Task.Delay(1);
+            duration -= Time.deltaTime;
+        }
+        Camera.main.transform.localPosition = pos;
     }
 }
