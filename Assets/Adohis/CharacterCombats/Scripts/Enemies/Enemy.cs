@@ -34,6 +34,13 @@ namespace Enemies
         [Header("Fx")]
         public GameObject dieFxPrefab;
         public float fxSize;
+        public float heightOffset;
+        public float minH;
+        public float maxH;
+        public float minS;
+        public float maxS;
+        public float minV;
+        public float maxV;
 
         [Header("Event")]
         public VoidBaseEventReference onDie;
@@ -97,8 +104,11 @@ namespace Enemies
             ScoreManager.Instance.AddScore(score);
 
             var fx = Instantiate(dieFxPrefab);
-            fx.transform.position = transform.position;
+            fx.transform.position = transform.position + Vector3.up * heightOffset;
             fx.transform.localScale = Vector3.one * fxSize;
+            var color = Color.HSVToRGB(Random.Range(minH, maxH), Random.Range(minS, maxS), Random.Range(minV, maxV));
+            fx.GetComponent<SpriteRenderer>().color = color;
+
             fx.gameObject.SetActive(true);
 
             body.enabled = false;

@@ -16,6 +16,9 @@ public class GreenObjectManager : MonoBehaviour
 
     public GameObject floatObj;
     public GameObject jumpObj;
+
+    public List<Sprite> sprites;
+
     public float greenGaugeValue;
     public float objSpawnDelay;
     public bool isClicked;
@@ -67,10 +70,14 @@ public class GreenObjectManager : MonoBehaviour
     }
     void spawnObj()
     {
-        Instantiate(floatObj, floatSpawnPos + Vector2.up * Random.Range(randomYposRange.minimum, randomYposRange.maximum), Quaternion.identity);
+        var obj = Instantiate(floatObj, floatSpawnPos + Vector2.up * Random.Range(randomYposRange.minimum, randomYposRange.maximum), Quaternion.identity);
+
+        obj.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Count)];
     }
     void spawnJumpObj()
     {
-        Instantiate(jumpObj, jumpSpawnPos + Vector2.right * Random.Range(jumpBallspawnPos.minimum, jumpBallspawnPos.maximum), Quaternion.identity);
+        var obj = Instantiate(jumpObj, jumpSpawnPos + Vector2.right * Random.Range(jumpBallspawnPos.minimum, jumpBallspawnPos.maximum), Quaternion.identity);
+
+        obj.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Count)];
     }
 }

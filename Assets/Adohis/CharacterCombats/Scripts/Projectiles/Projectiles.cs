@@ -18,6 +18,7 @@ namespace Character
         public float damage;
         public float resourceConsumption = 1f;
         public AudioClip fireSFX;
+        public AudioClip attackSFX;
 
         public Vector3EventReference onHitProjectile;
 
@@ -66,6 +67,12 @@ namespace Character
         private void Attack(Enemy enemy)
         {
             onHitProjectile?.Event?.Raise(transform.position);
+
+            if (attackSFX != null)
+            {
+                SoundManager.Instance.PlayDuplicatedSFXAsync(attackSFX).Forget();
+            }
+
             enemy.GetDamage(damage);
         }
 

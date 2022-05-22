@@ -20,6 +20,15 @@ namespace GameSystem
         {
             globalScore.Value += score;
         }
+
+        public void CalculateResult()
+        {
+            if (globalScore > highScore.Value)
+            {
+                highScore.Value = globalScore.Value;
+                highScore.InitialValue = globalScore.Value;
+            }
+        }
     }
 
 }

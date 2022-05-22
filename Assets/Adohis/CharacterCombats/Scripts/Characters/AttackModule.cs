@@ -14,6 +14,7 @@ namespace Character
         public float attackInterval = 1f;
 
         public FloatReference greenGauge;
+        public FloatReference maxGreenGauge;
 
         public GunMotion motion;
 
@@ -58,7 +59,7 @@ namespace Character
 
                 projectile.transform.localScale = projectile.transform.localScale * Random.Range(minSize, maxSize);
                 projectile.gameObject.SetActive(true);
-                greenGauge.Value -= projectile.resourceConsumption;
+                greenGauge.Value = Mathf.Clamp(greenGauge.Value - projectile.resourceConsumption, 0f, maxGreenGauge.Value);
 
                 onFire?.Event?.Raise();
 

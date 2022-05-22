@@ -101,7 +101,7 @@ namespace Utils
                 sfx.Play();
             }
 
-            await UniTask.WaitUntil(() => !sfx.isPlaying);
+            await UniTask.WaitUntil(() => !sfx.isPlaying).AttachExternalCancellation(this.GetCancellationTokenOnDestroy());
 
             Destroy(sfx.gameObject);
         }

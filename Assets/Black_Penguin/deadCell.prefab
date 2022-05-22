@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a0cec58fc32f482418596ffdf7c0d693, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,3 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gauge: {fileID: 0}
+  guageBar:
+    _usage: 2
+    _value: {fileID: 0}
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: d2ca0a037f1c903439d5f987d6542e78, type: 2}
+    _variableInstancer: {fileID: 0}

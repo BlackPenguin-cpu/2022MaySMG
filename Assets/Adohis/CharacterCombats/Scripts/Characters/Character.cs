@@ -32,7 +32,7 @@ namespace Character
             var xPos = Mathf.Lerp(-orthographicSize * screenRatio, orthographicSize * screenRatio, positionRatio.x);
             var yPos = Mathf.Lerp(-orthographicSize, orthographicSize, positionRatio.y);
 
-            transform.position = new Vector3(xPos, yPos, 0f);
+            transform.position = new Vector3(xPos, yPos, transform.position.z);
         }
     }
 
