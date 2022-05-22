@@ -22,7 +22,7 @@ public class jumpColorObject : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         rigid.AddForce(new Vector2(Random.Range(0, 2) == 0 ? jumpHeight.x : -jumpHeight.x, jumpHeight.y), ForceMode2D.Impulse);
-        rigid.AddTorque(Random.Range(-30,30));
+        rigid.AddTorque(Random.Range(-30, 30));
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Random.ColorHSV();
@@ -33,6 +33,7 @@ public class jumpColorObject : MonoBehaviour
         colorValue += spriteRenderer.color.g - minusColor;
         if (colorValue > 0)
         {
+            spriteRenderer.color += new Color(-1, 0, -1);
             particle.SetActive(true);
         }
     }
